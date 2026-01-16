@@ -1,4 +1,5 @@
 ---
+// src/components/Footer.astro
 const currentYear = new Date().getFullYear();
 ---
 
@@ -12,11 +13,11 @@ const currentYear = new Date().getFullYear();
         </p>
 
         <nav class="flex justify-center gap-8 text-sm font-medium mb-8">
-            <a href="/impressum" class="text-slate-200 hover:text-white transition underline-offset-4 hover:underline">Impressum</a>
-            <a href="/datenschutz" class="text-slate-200 hover:text-white transition underline-offset-4 hover:underline">Datenschutz</a>
+            <a href="/impressum" class="text-slate-200 hover:text-white transition hover:underline">Impressum</a>
+            <a href="/datenschutz" class="text-slate-200 hover:text-white transition hover:underline">Datenschutz</a>
         </nav>
 
-        <div class="text-xs text-slate-500 tracking-wide">
+        <div class="mt-8 text-xs text-slate-400 tracking-wide font-medium">
             &copy; {currentYear} Konsolen SSD Check
         </div>
     </div>
