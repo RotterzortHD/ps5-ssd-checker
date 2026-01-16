@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "990 PRO",
+    "brand": "Samsung",
+    "interface": "PCIe 4.0 NVMe",
+    "read_speed_mb_s": 7450,
+    "heatsink_included": false,
+    "height_mm": 2.3,
+    "capacity_tb": 2,
+    "asin": "B0B9C4DKKG",
+    "note": "Testsieger: Beste Leistung, ideal für High-End PCs & Workstations."
+  },
+  {
+    "id": 2,
+    "name": "WD_BLACK SN850X",
+    "brand": "Western Digital",
+    "interface": "PCIe 4.0 NVMe",
+    "read_speed_mb_s": 7300,
+    "heatsink_included": false,
+    "height_mm": 2.38,
+    "capacity_tb": 2,
+    "asin": "B0B7CMZ3QH",
+    "note": "Gaming-Tipp: Extrem schnell, oft offiziell für PS5 empfohlen."
+  },
+  {
+    "id": 3,
+    "name": "NM790",
+    "brand": "Lexar",
+    "interface": "PCIe 4.0 NVMe",
+    "read_speed_mb_s": 7400,
+    "heatsink_included": false,
+    "height_mm": 2.45,
+    "capacity_tb": 2,
+    "asin": "B0C4H49M48",
+    "note": "Preis/Leistung: Unglaublich günstig für diese Geschwindigkeit (DRAM-less)."
+  },
+  {
+    "id": 4,
+    "name": "P3 Plus",
+    "brand": "Crucial",
+    "interface": "PCIe 4.0 NVMe",
+    "read_speed_mb_s": 5000,
+    "heatsink_included": false,
+    "height_mm": 2.4,
+    "capacity_tb": 2,
+    "asin": "B0B25ML2FH",
+    "note": "Budget-König: Gute Wahl für Zweitlaufwerke oder Budget-Gaming."
+  },
+  {
+    "id": 5,
+    "name": "KC3000",
+    "brand": "Kingston",
+    "interface": "PCIe 4.0 NVMe",
+    "read_speed_mb_s": 7000,
+    "heatsink_included": true,
+    "height_mm": 3.5,
+    "capacity_tb": 2,
+    "asin": "B09K7DRMSC",
+    "note": "Allrounder: Sehr zuverlässig, flacher Graphene-Heatsink inklusive."
+  },
+  {
+    "id": 6,
+    "name": "870 EVO",
+    "brand": "Samsung",
+    "interface": "SATA III 2.5\"",
+    "read_speed_mb_s": 560,
+    "heatsink_included": false,
+    "height_mm": 6.8,
+    "capacity_tb": 2,
+    "asin": "B08PC5Z989",
+    "note": "Legacy: Beste Wahl für ältere PCs ohne M.2 Slot."
+  }
+]

@@ -1,0 +1,172 @@
+---
+import ssds from '../../data/ssds.json';
+import heatsinks from '../../data/heatsinks.json';
+import tools from '../../data/tools.json';
+import { checkPS5Compatibility } from '../../utils/checkCompatibility';
+import '../../global.css'; 
+
+export async function getStaticPaths() {
+  return ssds.map((ssd) => ({
+    params: { slug: ssd.id },
+    props: { ssd },
+  }));
+}
+
+const { ssd } = Astro.props;
+
+// --- FIX: Aggressive Reinigung der ASIN ---
+const cleanAsin = (val) => {
+    if (!val) return ''; 
+    // Entfernt alles außer Buchstaben und Zahlen
+    return String(val).replace(/[^a-zA-Z0-9]/g, '');
+};
+
+const result = checkPS5Compatibility(ssd);
+const speedPercentage = Math.min((ssd.read_speed_mb_s / 7500) * 100, 100);
+
+const accentColor = result.status === 'green' ? 'text-emerald-400' : result.status === 'red' ? 'text-rose-500' : 'text-amber-400';
+const glowColor = result.status === 'green' ? 'shadow-emerald-500/20' : result.status === 'red' ? 'shadow-rose-500/20' : 'shadow-amber-500/20';
+const barColor = result.status === 'green' ? 'bg-emerald-500' : result.status === 'red' ? 'bg-rose-500' : 'bg-amber-500';
+
+const seoTitle = `${ssd.name} PS5 Kompatibilitäts-Check & Test`;
+const seoDescription = `Passt die ${ssd.name} in die PS5? Wir prüfen Geschwindigkeit (${ssd.read_speed_mb_s} MB/s), Heatsink und Höhe. Das Ergebnis für ${ssd.brand} findest du hier.`;
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{seoTitle}</title>
+    <meta name="description" content={seoDescription} />
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:description" content={seoDescription} />
+    <meta property="og:type" content="article" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#0a0a0c] text-white font-['Plus_Jakarta_Sans'] min-h-screen selection:bg-blue-500 selection:text-white overflow-x-hidden">
+    
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-600/10 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-600/10 blur-[120px]"></div>
+    </div>
+
+    <nav class="border-b border-white/5 bg-black/20 backdrop-blur-xl sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="font-bold text-xl tracking-tighter flex items-center gap-2">
+            <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+            PS5<span class="text-slate-500">DB</span>
+        </div>
+        <a href="/" class="text-sm text-slate-400 hover:text-white transition">Zurück zur Suche</a>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <div class="lg:col-span-7 space-y-8">
+            <div class="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase tracking-widest">
+                <span>Hardware</span><span>/</span><span>Storage</span><span>/</span>
+                <span class={accentColor}>{result.status === 'green' ? 'Compatible' : 'Incompatible'}</span>
+            </div>
+
+            <div>
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 tracking-tight">{ssd.name}</h1>
+                <p class="text-xl text-slate-400 leading-relaxed border-l-2 border-slate-800 pl-4">
+                    Passt die <span class="text-white font-semibold">{ssd.brand}</span> SSD in den Erweiterungsslot deiner PlayStation 5?
+                </p>
+            </div>
+
+            <div class="relative w-full aspect-video bg-gradient-to-br from-slate-900 to-black rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden group">
+                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+                <div class="relative w-64 h-20 bg-slate-800 rounded border border-slate-600 shadow-2xl transform transition duration-500 group-hover:scale-105 flex items-center px-4 justify-between z-10">
+                    <div class="absolute left-0 top-0 h-full w-2 bg-yellow-500 rounded-l"></div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex gap-1"><div class="w-8 h-8 bg-black rounded border border-slate-700"></div><div class="w-8 h-8 bg-black rounded border border-slate-700"></div></div>
+                    </div>
+                    <div class="text-right"><div class="text-[10px] text-slate-400 font-mono">M.2 NVMe</div><div class="text-sm font-bold text-white">{ssd.brand}</div></div>
+                </div>
+            </div>
+
+            <div class="bg-white/5 rounded-2xl border border-white/10 p-6 backdrop-blur-sm">
+                <h3 class="text-sm font-mono uppercase text-slate-500 mb-6">Technical Specifications</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-white/5 pb-4"><span class="text-slate-400">Interface</span><span class="font-mono text-white">{ssd.interface}</span></div>
+                    <div class="flex justify-between items-center border-b border-white/5 pb-4"><span class="text-slate-400">Heatsink</span><span class={`font-mono ${ssd.has_heatsink ? 'text-green-400' : 'text-yellow-400'}`}>{ssd.has_heatsink ? 'Included' : 'Not Included'}</span></div>
+                     <div class="flex justify-between items-center pb-2"><span class="text-slate-400">Height</span><span class="font-mono text-white">{ssd.height_mm} mm</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-5 relative lg:sticky lg:top-24 space-y-6">
+            <div class={`rounded-3xl p-8 border ${result.status === 'green' ? 'bg-emerald-900/10 border-emerald-500/30' : result.status === 'red' ? 'bg-rose-900/10 border-rose-500/30' : 'bg-amber-900/10 border-amber-500/30'} backdrop-blur-xl ${glowColor} shadow-2xl`}>
+                <div class="flex items-start justify-between mb-6">
+                    <div><h2 class={`text-2xl font-bold ${accentColor} mb-1`}>{result.title}</h2><p class="text-sm text-slate-400">Compatibility Analysis</p></div>
+                    <div class={`w-12 h-12 rounded-full flex items-center justify-center text-2xl ${result.status === 'green' ? 'bg-emerald-500/20 text-emerald-400' : result.status === 'red' ? 'bg-rose-500/20 text-rose-400' : 'bg-amber-500/20 text-amber-400'}`}>{result.status === 'green' ? '✓' : result.status === 'red' ? '✕' : '!'}</div>
+                </div>
+                <p class="text-slate-300 leading-relaxed mb-6 border-t border-white/10 pt-4">{result.message}</p>
+                <div class="bg-black/40 rounded-xl p-4 border border-white/5">
+                    <div class="flex justify-between text-xs text-slate-500 mb-2 font-mono"><span>SPEED</span><span>{ssd.read_speed_mb_s} MB/s</span></div>
+                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden"><div class={`h-full rounded-full ${barColor} shadow-[0_0_10px_rgba(0,0,0,0.5)] transition-all duration-1000 ease-out`} style={`width: ${speedPercentage}%`}></div></div>
+                </div>
+            </div>
+
+            <a href={`https://www.amazon.de/dp/${cleanAsin(ssd.asin)}?tag=ps5ssd21-21`} 
+               target="_blank" rel="nofollow sponsored" 
+               class="group relative block w-full">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-200"></div>
+                <div class="relative flex items-center justify-between bg-slate-900 border border-white/10 rounded-2xl px-6 py-5 hover:bg-slate-800 transition">
+                    <span class="font-bold text-lg">Preis prüfen</span>
+                    <span class="flex items-center gap-2 text-sm text-slate-400 group-hover:text-white transition">Amazon <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                </div>
+            </a>
+            
+            <p class="text-center text-xs text-slate-600">*Werbelink. Wir erhalten ggf. eine Provision.</p>
+
+            <div class="mt-6 bg-slate-900/50 rounded-xl border border-white/10 p-5">
+                <h3 class="text-xs font-bold uppercase text-slate-500 mb-4 tracking-wider">Wird oft zusammen gekauft</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 opacity-50">
+                        <div class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-xs">✓</div>
+                        <span class="text-sm text-slate-300 line-through">{ssd.name}</span>
+                    </div>
+
+                    {!ssd.has_heatsink && heatsinks[0] && (
+                        <a href={`https://www.amazon.de/dp/${cleanAsin(heatsinks[0].asin)}?tag=ps5ssd21-21`} target="_blank" rel="nofollow sponsored" class="flex items-center gap-3 group cursor-pointer">
+                            <div class="w-5 h-5 rounded border border-slate-600 group-hover:border-amber-400 flex items-center justify-center text-slate-900 group-hover:text-amber-400 transition bg-slate-800"><span class="group-hover:block hidden text-xs font-bold">＋</span><span class="group-hover:hidden block text-xs font-bold text-slate-500">○</span></div>
+                            <div class="text-sm"><span class="text-amber-400 font-bold block group-hover:underline">Passender Heatsink</span><span class="text-xs text-slate-500">{heatsinks[0].price_range}</span></div>
+                        </a>
+                    )}
+
+                    {tools[0] && (
+                        <a href={`https://www.amazon.de/dp/${cleanAsin(tools[0].asin)}?tag=ps5ssd21-21`} target="_blank" rel="nofollow sponsored" class="flex items-center gap-3 group cursor-pointer">
+                            <div class="w-5 h-5 rounded border border-slate-600 group-hover:border-blue-400 flex items-center justify-center text-slate-900 group-hover:text-blue-400 transition bg-slate-800"><span class="group-hover:block hidden text-xs font-bold">＋</span><span class="group-hover:hidden block text-xs font-bold text-slate-500">○</span></div>
+                            <div class="text-sm"><span class="text-blue-300 font-bold block group-hover:underline">{tools[0].name}</span><span class="text-xs text-slate-500">{tools[0].price} • Für die Schraube</span></div>
+                        </a>
+                    )}
+                </div>
+            </div>
+        </div>
+      </div>
+      
+      {(!ssd.has_heatsink && result.status !== 'red' && heatsinks.length > 0) && (
+        <div class="mt-12 border-t border-white/10 pt-12 animate-fade-in">
+            <div class="bg-gradient-to-br from-amber-900/20 to-orange-900/10 border border-amber-500/20 rounded-2xl p-8">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="p-3 bg-amber-500/10 rounded-full text-amber-500"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"></path></svg></div>
+                    <div><h3 class="text-2xl font-bold text-white">Achtung: Hitzestau vermeiden!</h3><p class="text-slate-400">Diese SSD hat keinen Kühler. Sony schreibt einen Heatsink zwingend vor.</p></div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-4">
+                    {heatsinks.map((sink) => (
+                        <a href={`https://www.amazon.de/dp/${cleanAsin(sink.asin)}?tag=ps5ssd21-21`} target="_blank" rel="nofollow sponsored" class="bg-black/40 hover:bg-amber-500/10 border border-white/10 hover:border-amber-500/50 p-4 rounded-xl transition group text-center">
+                            <div class="text-white font-bold mb-1 group-hover:text-amber-400 transition">{sink.name}</div>
+                            <div class="text-xs text-slate-500 mb-3">{sink.features}</div>
+                            <div class="inline-block bg-white/10 px-3 py-1 rounded text-xs font-mono text-amber-200">{sink.price_range}</div>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+      )}
+    </main>
+  </body>
+</html>
