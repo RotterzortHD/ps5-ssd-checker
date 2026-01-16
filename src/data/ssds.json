@@ -35,17 +35,17 @@
     "asin": "B0C4ZLXGQ8",
     "notes": "Der Preis-Leistungs-Sieger! Schnell wie Samsung, aber Kühler fehlt."
   },
-  {
-    "id": "crucial-p310-2tb",
-    "name": "Crucial P310 (2230 Format)",
+{
+    "id": "crucial-p310-ps5-2tb",
+    "name": "Crucial P310 (PS5 Edition)",
     "brand": "Crucial",
     "interface": "PCIe 4.0",
     "read_speed_mb_s": 7100,
-    "has_heatsink": false,
-    "height_mm": 2.4,
+    "has_heatsink": true,
+    "height_mm": 9.2,
     "capacity_gb": 2000,
-    "asin": "B0DC8RVRBZ",
-    "notes": "ACHTUNG: Sehr kurze Bauform (2230). Benötigt Umbau der Schraube im Slot!"
+    "asin": "B0DQBQZ9LX",
+    "notes": "Neuheit: Spezielle PS5-Version im Standard-Format (2280)."
   },
   {
     "id": "kingston-kc3000-2tb",
@@ -107,9 +107,9 @@
     "asin": "B0C8WPRM9T",
     "notes": "STOPP! Nicht kaufen für PS5. Zu langsam (nur 4150 MB/s)!"
   },
-  {
+{
     "id": "crucial-t705-2tb",
-    "name": "Crucial T705 (Gen5)",
+    "name": "Crucial T705 (Gen5 High-End)",
     "brand": "Crucial",
     "interface": "PCIe 5.0",
     "read_speed_mb_s": 14500,
@@ -117,6 +117,6 @@
     "height_mm": 2.3,
     "capacity_gb": 2000,
     "asin": "B0CTRVZKG7",
-    "notes": "Overkill: PCIe 5.0 Monster. Läuft in PS5, wird aber sehr heiß (Kühler Pflicht!)."
-  }
+    "notes": "PCIe 5.0 Monster! Funktioniert in der PS5, wird aber extrem heiß. Kühlkörper ist PFLICHT!"
+  },
 ]
