@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Wir wollen nicht, dass Google deine Datenschutzerklärung als wichtiges Suchergebnis anzeigt
+Disallow: /datenschutz
+Disallow: /impressum
+
+# Hier zeigen wir Google den Wegweiser zu allen deinen Seiten
+Sitemap: https://konsolen-ssd-check.de/sitemap-index.xml
