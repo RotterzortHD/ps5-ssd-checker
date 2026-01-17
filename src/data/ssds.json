@@ -8,6 +8,8 @@
     "has_heatsink": true,
     "height_mm": 8.2,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0BM42X58C",
     "notes": "Sehr beliebter Allround-Bestseller mit sehr gutem Preis-Leistungs-Verhältnis."
   },
@@ -20,6 +22,8 @@
     "has_heatsink": true,
     "height_mm": 9,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0B7CPSN2K",
     "notes": "Extrem schnell, Top-Empfehlung für Gamer."
   },
@@ -32,6 +36,8 @@
     "has_heatsink": false,
     "height_mm": 2.38,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0DN7CYYSD",
     "notes": "Neues Modell, sehr effizient. Heatsink erforderlich!"
   },
@@ -44,6 +50,8 @@
     "has_heatsink": true,
     "height_mm": 9.7,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0DQ9K7S1Q",
     "notes": "Starke Mittelklasse mit vorinstalliertem Kühler."
   },
@@ -56,6 +64,8 @@
     "has_heatsink": true,
     "height_mm": 9,
     "capacity_gb": 2000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0DWT6JGQH",
     "notes": "Next-Gen Speed! PCIe 5.0 Monster (abwärtskompatibel)."
   },
@@ -68,6 +78,8 @@
     "has_heatsink": true,
     "height_mm": 9.89,
     "capacity_gb": 2000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0C47ZX1WB",
     "notes": "Offiziell lizenziert für PlayStation 5."
   },
@@ -80,6 +92,8 @@
     "has_heatsink": false,
     "height_mm": 2.38,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0DGH2FH7T",
     "notes": "Guter Allrounder, Heatsink muss dazu gekauft werden."
   },
@@ -92,6 +106,8 @@
     "has_heatsink": false,
     "height_mm": 2.2,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0BBWH1R8H",
     "notes": "Budget-Tipp. Funktioniert, aber unter Sony-Empfehlung (5500 MB/s)."
   },
@@ -104,6 +120,8 @@
     "has_heatsink": false,
     "height_mm": 2.4,
     "capacity_gb": 500,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0B25LQQPC",
     "notes": "Günstige Einstiegs-Gen4. Heatsink nicht vergessen."
   },
@@ -116,6 +134,8 @@
     "has_heatsink": false,
     "height_mm": 2.4,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B098WL46RS",
     "notes": "Schnell & zuverlässig, oft für Gaming empfohlen."
   },
@@ -128,10 +148,12 @@
     "has_heatsink": true,
     "height_mm": 9.7,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0CJY4L6DH",
     "notes": "Sehr schnelle DRAM-lose SSD mit Top-Reviews."
   },
-{
+  {
     "id": "sabrent-rocket-4-1tb",
     "name": "Sabrent Rocket 4",
     "brand": "Sabrent",
@@ -140,6 +162,8 @@
     "has_heatsink": false,
     "height_mm": 2.2,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0CZJWSFGS",
     "notes": "Diese Version schafft volle 7400 MB/s. Heatsink erforderlich."
   },
@@ -152,6 +176,8 @@
     "has_heatsink": true,
     "height_mm": 9.2,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0BNQ2DFX6",
     "notes": "Preis-Leistungs-Kracher inkl. Heatsink."
   },
@@ -164,6 +190,8 @@
     "has_heatsink": false,
     "height_mm": 2.2,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0CCRSP4BL",
     "notes": "Sehr gute Performance zum kleinen Preis."
   },
@@ -176,6 +204,8 @@
     "has_heatsink": true,
     "height_mm": 7.6,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B093DP3X4H",
     "notes": "Inklusive flachem Kühlblech zur Selbstmontage."
   },
@@ -188,7 +218,79 @@
     "has_heatsink": true,
     "height_mm": 11.0,
     "capacity_gb": 1000,
+    "form_factor": "2280",
+    "compatibility": ["ps5", "pc"],
     "asin": "B0CWHDZSVN",
     "notes": "High-End-SSD mit extrem hoher Haltbarkeit (TBW)."
+  },
+  {
+    "id": "sabrent-rocket-2230-1tb",
+    "name": "Sabrent Rocket 2230",
+    "brand": "Sabrent",
+    "interface": "PCIe 4.0",
+    "read_speed_mb_s": 4750,
+    "has_heatsink": false,
+    "height_mm": 2.2,
+    "capacity_gb": 1000,
+    "form_factor": "2230",
+    "compatibility": ["steam-deck", "rog-ally", "surface"],
+    "asin": "B0BQG6JCRP",
+    "notes": "Die Referenz für Steam Deck & ROG Ally. Passt perfekt in den 2230 Slot."
+  },
+  {
+    "id": "wd-black-sn770m-1tb",
+    "name": "WD_BLACK SN770M",
+    "brand": "Western Digital",
+    "interface": "PCIe 4.0",
+    "read_speed_mb_s": 5150,
+    "has_heatsink": false,
+    "height_mm": 2.2,
+    "capacity_gb": 1000,
+    "form_factor": "2230",
+    "compatibility": ["steam-deck", "rog-ally", "surface"],
+    "asin": "B0CP626QNM",
+    "notes": "Speziell für Handhelds entwickelt. Sehr effizient."
+  },
+  {
+    "id": "corsair-mp600-mini-1tb",
+    "name": "Corsair MP600 Mini",
+    "brand": "Corsair",
+    "interface": "PCIe 4.0",
+    "read_speed_mb_s": 7000,
+    "has_heatsink": false,
+    "height_mm": 2.2,
+    "capacity_gb": 1000,
+    "form_factor": "2230",
+    "compatibility": ["steam-deck", "rog-ally", "surface"],
+    "asin": "B0D9MJCFNK",
+    "notes": "Beliebter Bestseller. Plug & Play für das Steam Deck."
+  },
+  {
+    "id": "silicon-power-ud90-2230-1tb",
+    "name": "Silicon Power UD90 (2230)",
+    "brand": "Silicon Power",
+    "interface": "PCIe 4.0",
+    "read_speed_mb_s": 5000,
+    "has_heatsink": false,
+    "height_mm": 2.1,
+    "capacity_gb": 1000,
+    "form_factor": "2230",
+    "compatibility": ["steam-deck", "rog-ally"],
+    "asin": "B0CCDBKKZY",
+    "notes": "Preis-Leistungs-Tipp für Sparfüchse."
+  },
+  {
+    "id": "sabrent-rocket-2230-2tb",
+    "name": "Sabrent Rocket 2230 (2TB)",
+    "brand": "Sabrent",
+    "interface": "PCIe 4.0",
+    "read_speed_mb_s": 4750,
+    "has_heatsink": false,
+    "height_mm": 2.2,
+    "capacity_gb": 2000,
+    "form_factor": "2230",
+    "compatibility": ["steam-deck", "rog-ally"],
+    "asin": "B0C5YS3QY4",
+    "notes": "Massiver Speicherplatz! Eine der wenigen 2TB Optionen."
   }
 ]

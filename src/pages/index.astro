@@ -1,9 +1,13 @@
 ---
+// src/pages/index.astro Update
 import Layout from '../layouts/Layout.astro';
 import ssds from '../data/ssds.json';
+import { checkCompatibility } from '../utils/checkCompatibility'; // Import Check Logic
 import '../global.css'; 
 
-const sortedSSDs = ssds.sort((a, b) => a.name.localeCompare(b.name));
+// Filter: Nur PS5 kompatible SSDs auf der Startseite
+const ps5SSDs = ssds.filter(ssd => ssd.compatibility.includes('ps5'));
+const sortedSSDs = ps5SSDs.sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <Layout title="PS5 SSD Kompatibilitäts-Checker">
