@@ -3,7 +3,6 @@
 import '../global.css';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-// Lokale Schriftarten (Super!)
 import '@fontsource/plus-jakarta-sans/400.css';
 import '@fontsource/plus-jakarta-sans/600.css';
 import '@fontsource/plus-jakarta-sans/800.css';
@@ -18,9 +17,12 @@ interface Props {
 
 const { 
     title, 
-    description = "SSD Check für PS5, Steam Deck & mehr.",
+    description = "Der ultimative Guide für PS5 & Steam Deck Speicher-Upgrades. Finde die passende SSD.",
     image = "/social-default.jpg" 
 } = Astro.props;
+
+const siteUrl = Astro.url.origin;
+const imageUrl = new URL(image, siteUrl).href;
 ---
 
 <!doctype html>
@@ -33,6 +35,20 @@ const {
         
         <title>{title}</title>
         <meta name="description" content={description} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imageUrl} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={Astro.url} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={imageUrl} />
+        
+        <link rel="sitemap" href="/sitemap-index.xml" />
     </head>
     
     <body class="bg-[#0a0a0c] text-white font-['Plus_Jakarta_Sans'] min-h-screen overflow-x-hidden flex flex-col">
