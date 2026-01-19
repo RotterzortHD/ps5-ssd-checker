@@ -2,7 +2,13 @@
 // src/layouts/Layout.astro
 import '../global.css';
 import Footer from '../components/Footer.astro';
-import CookieBanner from '../components/CookieBanner.astro'; // <--- NEU: Import hinzugefügt
+import CookieBanner from '../components/CookieBanner.astro';
+// Lokale Schriftarten (Super!)
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/600.css';
+import '@fontsource/plus-jakarta-sans/800.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/700.css';
 
 interface Props {
     title: string;
@@ -24,7 +30,7 @@ const {
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+        
         <title>{title}</title>
         <meta name="description" content={description} />
     </head>
@@ -56,5 +62,6 @@ const {
         
         <Footer />
         
-        <CookieBanner /> </body>
+        <CookieBanner /> 
+    </body>
 </html>

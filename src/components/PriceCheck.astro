@@ -5,8 +5,8 @@ import tools from '../data/tools.json';
 
 const { ssd } = Astro.props;
 
-// Helper zum ASIN reinigen
-const cleanAsin = (val) => {
+// Helper zum ASIN reinigen (mit Typ 'any' gegen Fehler)
+const cleanAsin = (val: any) => {
     if (!val) return ''; 
     return String(val).replace(/[^a-zA-Z0-9]/g, '');
 };
@@ -22,11 +22,12 @@ const affiliateTag = "ps5ssd21-21";
         </div>
         
         <a href={`https://www.amazon.de/dp/${cleanAsin(ssd.asin)}?tag=${affiliateTag}`} 
-           target="_blank" rel="nofollow sponsored" 
+           target="_blank" 
+           rel="noopener nofollow sponsored" 
            class="group relative block w-full mb-4">
             <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-200"></div>
             <div class="relative flex items-center justify-between bg-slate-900 border border-white/10 rounded-2xl px-6 py-5 hover:bg-slate-800 transition">
-                <span class="font-bold text-lg text-white">Auf Amazon ansehen</span>
+                <span class="font-bold text-lg text-white">Auf Amazon ansehen*</span>
                 <span class="text-slate-400 group-hover:text-white transition">➔</span>
             </div>
         </a>
@@ -43,24 +44,30 @@ const affiliateTag = "ps5ssd21-21";
             </div>
 
             {!ssd.has_heatsink && heatsinks[0] && (
-                <a href={`https://www.amazon.de/dp/${cleanAsin(heatsinks[0].asin)}?tag=${affiliateTag}`} target="_blank" rel="nofollow sponsored" class="flex items-center gap-3 group cursor-pointer hover:bg-white/5 p-2 rounded -mx-2 transition">
+                <a href={`https://www.amazon.de/dp/${cleanAsin(heatsinks[0].asin)}?tag=${affiliateTag}`} 
+                   target="_blank" 
+                   rel="noopener nofollow sponsored" 
+                   class="flex items-center gap-3 group cursor-pointer hover:bg-white/5 p-2 rounded -mx-2 transition">
                     <div class="w-5 h-5 rounded border border-slate-600 group-hover:border-amber-400 flex items-center justify-center text-slate-900 group-hover:text-amber-400 transition bg-slate-800">
                         <span class="text-xs font-bold text-slate-500 group-hover:text-amber-400">+</span>
                     </div>
                     <div class="text-sm">
-                        <span class="text-amber-400 font-bold block group-hover:underline">Passender Heatsink</span>
+                        <span class="text-amber-400 font-bold block group-hover:underline">Passender Heatsink*</span>
                         <span class="text-xs text-slate-500">Empfohlen für diese SSD</span>
                     </div>
                 </a>
             )}
 
             {tools[0] && (
-                <a href={`https://www.amazon.de/dp/${cleanAsin(tools[0].asin)}?tag=${affiliateTag}`} target="_blank" rel="nofollow sponsored" class="flex items-center gap-3 group cursor-pointer hover:bg-white/5 p-2 rounded -mx-2 transition">
+                <a href={`https://www.amazon.de/dp/${cleanAsin(tools[0].asin)}?tag=${affiliateTag}`} 
+                   target="_blank" 
+                   rel="noopener nofollow sponsored" 
+                   class="flex items-center gap-3 group cursor-pointer hover:bg-white/5 p-2 rounded -mx-2 transition">
                     <div class="w-5 h-5 rounded border border-slate-600 group-hover:border-blue-400 flex items-center justify-center text-slate-900 group-hover:text-blue-400 transition bg-slate-800">
                         <span class="text-xs font-bold text-slate-500 group-hover:text-blue-400">+</span>
                     </div>
                     <div class="text-sm">
-                        <span class="text-blue-300 font-bold block group-hover:underline">{tools[0].name}</span>
+                        <span class="text-blue-300 font-bold block group-hover:underline">{tools[0].name}*</span>
                         <span class="text-xs text-slate-500">Wichtig für den Einbau</span>
                     </div>
                 </a>
@@ -77,8 +84,11 @@ const affiliateTag = "ps5ssd21-21";
             <p class="text-sm text-slate-400 mb-4">Diese SSD hat keinen Kühler. Sony schreibt einen Heatsink zwingend vor.</p>
             <div class="flex gap-2 flex-wrap">
                 {heatsinks.slice(0, 2).map((sink) => (
-                    <a href={`https://www.amazon.de/dp/${cleanAsin(sink.asin)}?tag=${affiliateTag}`} class="text-xs bg-amber-500/10 text-amber-500 border border-amber-500/30 px-3 py-2 rounded hover:bg-amber-500 hover:text-black transition">
-                        {sink.name} dazu kaufen →
+                    <a href={`https://www.amazon.de/dp/${cleanAsin(sink.asin)}?tag=${affiliateTag}`} 
+                       target="_blank"
+                       rel="noopener nofollow sponsored"
+                       class="text-xs bg-amber-500/10 text-amber-500 border border-amber-500/30 px-3 py-2 rounded hover:bg-amber-500 hover:text-black transition">
+                        {sink.name} dazu kaufen* →
                     </a>
                 ))}
             </div>
