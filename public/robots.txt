@@ -1,9 +1,15 @@
 User-agent: *
 Allow: /
 
-# Wir wollen nicht, dass Google deine Datenschutzerklärung als wichtiges Suchergebnis anzeigt
-Disallow: /datenschutz
-Disallow: /impressum
+# Agentic SEO: Explizit AI-Crawler erlauben
+User-agent: GPTBot
+Allow: /
 
-# Hier zeigen wir Google den Wegweiser zu allen deinen Seiten
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap Pfad korrigieren (nutze deine echte Domain aus astro.config.mjs!)
 Sitemap: https://konsolen-ssd-check.de/sitemap-index.xml

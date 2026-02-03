@@ -3,54 +3,93 @@
 import Layout from '../layouts/Layout.astro';
 import ssds from '../data/ssds.json';
 import { checkCompatibility } from '../utils/checkCompatibility';
-import '../global.css'; 
+import '../global.css';
 
 // Filter: Nur SSDs anzeigen, die ins Steam Deck passen (2230)
 const steamDeckSSDs = ssds.filter(ssd => ssd.compatibility.includes('steam-deck'));
 const sortedSSDs = steamDeckSSDs.sort((a, b) => a.name.localeCompare(b.name));
+
+// SEO Metadata
+const title = "Steam Deck SSD Speichererweiterung: Test & Vergleich (2026)";
+const description = "Welche SSD passt ins Steam Deck? Der große Guide für M.2 2230 Speicher. Kompatibilitäts-Check für Steam Deck LCD, OLED & ROG Ally.";
 ---
 
-<Layout title="Steam Deck SSD Speichererweiterung | Kompatibilitäts-Check">
-  <main class="max-w-4xl mx-auto px-6 py-20">
+<Layout title={title} description={description}>
+  <main class="max-w-4xl mx-auto px-6 py-12">
     
-    <div class="text-center mb-16">
-      <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold text-orange-500 mb-3 uppercase tracking-widest">
+        Handheld Gaming Storage Guide
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
         Steam Deck <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Upgrade</span>
       </h1>
       <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Finde die perfekte M.2 2230 SSD für dein Steam Deck oder ROG Ally.
-        Wir zeigen dir nur Modelle, die wirklich passen.
+        Mehr Platz für deine Bibliothek. Wir vergleichen die besten <strong>M.2 2230 SSDs</strong> für Valve Steam Deck (LCD & OLED) und ASUS ROG Ally.
       </p>
     </div>
 
-    <div class="grid gap-4">
+    <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 mb-16 backdrop-blur-sm">
+      <h2 class="text-2xl font-bold text-white mb-4">Das musst du wissen (TL;DR)</h2>
+      <div class="grid md:grid-cols-2 gap-8 text-slate-300">
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span><strong>Formfaktor 2230:</strong> Das Steam Deck benötigt winzige M.2 SSDs (30mm lang). Standard PC-SSDs (2280) passen nicht!</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span><strong>OLED & LCD kompatibel:</strong> Alle hier gelisteten SSDs funktionieren in beiden Steam Deck Modellen.</span>
+          </li>
+        </ul>
+        <ul class="space-y-3">
+           <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span><strong>Stromverbrauch:</strong> Achte auf effiziente SSDs (wie die WD SN770M), um die Akkulaufzeit nicht zu verkürzen.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-6 h-6 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span><strong>Garantie:</strong> Valve erlaubt das Öffnen des Geräts, haftet aber nicht für Schäden durch den Umbau.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid gap-4 mb-20">
+      <h3 class="text-xl font-bold text-white mb-4">Verfügbare Modelle</h3>
       {sortedSSDs.map((ssd) => {
-        // Hier rufen wir den Check speziell für Steam Deck auf
         const check = checkCompatibility(ssd, 'steam-deck');
         
         return (
         <div class="group relative block">
           <div class="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/0 to-orange-500/0 group-hover:from-orange-500/5 transition duration-500 rounded-xl"></div>
           
-          <div class="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 flex items-center justify-between">
+          <div class="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
               
               <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-xs font-bold text-slate-400 border border-slate-700">
+                  <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center text-sm font-bold text-slate-400 border border-slate-700 shrink-0">
                       {ssd.brand.substring(0,2).toUpperCase()}
                   </div>
                   <div>
                       <h2 class="font-bold text-lg text-slate-200 group-hover:text-white transition">{ssd.name}</h2>
-                      <p class="text-sm text-slate-500 font-mono">{ssd.capacity_gb} GB • {ssd.form_factor}</p>
+                      <div class="flex items-center gap-3 text-sm text-slate-500 font-mono mt-1">
+                        <span>{ssd.capacity_gb} GB</span>
+                        <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+                        <span>{ssd.read_speed_mb_s} MB/s</span>
+                        <span class="w-1 h-1 bg-slate-600 rounded-full"></span>
+                        <span class="text-orange-400/80">M.2 2230</span>
+                      </div>
                   </div>
               </div>
 
-              <div class="flex items-center gap-4">
-                 <span class={`px-3 py-1 rounded-full text-xs font-bold border ${check.colorClass}`}>
-                    {check.title}
-                 </span>
+              <div class="flex items-center gap-4 justify-between md:justify-end w-full md:w-auto">
+                 <div class="hidden md:flex flex-col items-end mr-2">
+                    {ssd.notes && <span class="text-xs text-slate-500 max-w-[200px] text-right">{ssd.notes}</span>}
+                 </div>
                  
-                 <a href={`https://www.amazon.de/dp/${ssd.asin}?tag=ps5ssd21-21`} target="_blank" class="bg-white text-black px-4 py-2 rounded-lg text-sm font-bold hover:bg-slate-200 transition">
-                    Zum Preis
+                 <a href={`https://www.amazon.de/dp/${ssd.asin}?tag=ps5ssd21-21`} target="_blank" rel="nofollow noopener" class="bg-white text-black px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-200 transition flex items-center gap-2 whitespace-nowrap">
+                    <span>Preis prüfen</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                  </a>
               </div>
 
@@ -59,11 +98,63 @@ const sortedSSDs = steamDeckSSDs.sort((a, b) => a.name.localeCompare(b.name));
       )})}
     </div>
 
-    {steamDeckSSDs.length === 0 && (
-        <div class="text-center text-slate-500 py-12">
-            Aktuell keine SSDs gefunden. Wir füllen die Datenbank gerade auf!
+    <div class="border-t border-slate-800 pt-16">
+      <h3 class="text-2xl font-bold text-white mb-8">Häufige Fragen (FAQ)</h3>
+      
+      <div class="space-y-8">
+        <div>
+          <h4 class="text-lg font-bold text-slate-200 mb-2">Welche SSD passt in das Steam Deck?</h4>
+          <p class="text-slate-400 leading-relaxed">
+            Das Steam Deck (sowohl LCD als auch OLED) nutzt ausschließlich SSDs im <strong>M.2 2230</strong> Formfaktor. 
+            Diese sind deutlich kürzer als normale PC-SSDs (2280). Die Schnittstelle ist PCIe Gen 3 (LCD) bzw. Gen 4 (OLED), 
+            wobei PCIe 4.0 SSDs in beiden Modellen funktionieren (abwärtskompatibel).
+          </p>
         </div>
-    )}
+
+        <div>
+          <h4 class="text-lg font-bold text-slate-200 mb-2">Verliere ich meine Garantie beim Wechsel?</h4>
+          <p class="text-slate-400 leading-relaxed">
+            Valve hat offiziell bestätigt, dass der Tausch der SSD erlaubt ist. Allerdings deckt die Garantie keine Schäden ab, 
+            die <em>während</em> des Umbaus entstehen (z.B. abgerissene Kabel oder statische Entladung). Arbeite vorsichtig!
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold text-slate-200 mb-2">Wie installiere ich SteamOS neu?</h4>
+          <p class="text-slate-400 leading-relaxed">
+            Du benötigst einen USB-Stick (mind. 8GB) und einen USB-C Adapter. Lade das "SteamOS Recovery Image" von der offiziellen Valve-Seite, 
+            flashe es mit einem Tool wie Rufus oder BalenaEtcher auf den Stick und boote das Steam Deck über den "Boot Manager" (Leiser-Taste + Power).
+          </p>
+        </div>
+      </div>
+    </div>
 
   </main>
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Welche SSD Größe passt in das Steam Deck?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das Steam Deck benötigt SSDs im M.2 2230 Formfaktor (30mm Länge). Standard 2280 SSDs sind zu lang und passen nicht ins Gehäuse."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Kann man 2TB ins Steam Deck einbauen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, mittlerweile gibt es M.2 2230 SSDs mit bis zu 2TB Speicher (z.B. WD SN770M oder Sabrent Rocket 2230), die problemlos erkannt werden."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Welches Werkzeug brauche ich für das Steam Deck SSD Upgrade?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Du benötigst einen PH1 Schraubendreher (für die Gehäuseschrauben), einen PH0 Schraubendreher (für die SSD-Schraube), ein Plektrum zum Öffnen des Gehäuses und idealerweise eine Pinzette."
+      }
+    }]
+  })} />
 </Layout>

@@ -1,28 +1,86 @@
 ---
 // src/components/TechSpecs.astro
+interface Props {
+  ssd: {
+    interface: string;
+    form_factor: string;
+    capacity_gb: number;
+    read_speed_mb_s: number;
+    height_mm: number;
+    tbw?: number;
+    warranty_years?: number;
+    pros?: string[];
+    cons?: string[];
+  };
+}
+
 const { ssd } = Astro.props;
 ---
 
-<div class="bg-white/5 rounded-2xl border border-white/10 p-6 backdrop-blur-sm">
-    <h3 class="text-sm font-mono uppercase text-slate-500 mb-6">Technische Daten</h3>
-    <div class="space-y-4 font-mono text-sm">
-        <div class="flex justify-between items-center border-b border-white/5 pb-4">
-          <span class="text-slate-400">Interface</span>
-          <span class="text-white">{ssd.interface}</span>
-        </div>
-        <div class="flex justify-between items-center border-b border-white/5 pb-4">
-          <span class="text-slate-400">Heatsink</span>
-          <span class={ssd.has_heatsink ? 'text-green-400' : 'text-yellow-400'}>
-            {ssd.has_heatsink ? 'Verbaut (Included)' : 'Nicht verbaut (Not included)'}
-          </span>
-        </div>
-        <div class="flex justify-between items-center border-b border-white/5 pb-4">
-          <span class="text-slate-400">Höhe</span>
-          <span class="text-white">{ssd.height_mm} mm</span>
-        </div>
-        <div class="flex justify-between items-center pb-2">
-            <span class="text-slate-400">Kapazität</span>
-            <span class="text-white">{ssd.capacity_gb >= 1000 ? `${ssd.capacity_gb/1000} TB` : `${ssd.capacity_gb} GB`}</span>
-        </div>
+<div class="grid md:grid-cols-2 gap-8">
+  
+  <section class="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-sm h-full">
+    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+      <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+      Technische Daten
+    </h2>
+    
+    <div class="space-y-4">
+      <div class="flex justify-between py-2 border-b border-slate-800">
+        <span class="text-slate-400">Schnittstelle</span>
+        <span class="font-mono text-white">{ssd.interface}</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-slate-800">
+        <span class="text-slate-400">Formfaktor</span>
+        <span class="font-mono text-white">M.2 {ssd.form_factor}</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-slate-800">
+        <span class="text-slate-400">Kapazität</span>
+        <span class="font-mono text-white">{ssd.capacity_gb} GB</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-slate-800">
+        <span class="text-slate-400">Speed (Lesen)</span>
+        <span class="font-mono text-emerald-400">{ssd.read_speed_mb_s} MB/s</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-slate-800">
+        <span class="text-slate-400">Haltbarkeit (TBW)</span>
+        <span class="font-mono text-white">{ssd.tbw ? `${ssd.tbw} TB` : 'k.A.'}</span>
+      </div>
+      <div class="flex justify-between py-2 border-b border-slate-800">
+        <span class="text-slate-400">Garantie</span>
+        <span class="font-mono text-white">{ssd.warranty_years ? `${ssd.warranty_years} Jahre` : 'k.A.'}</span>
+      </div>
     </div>
+  </section>
+
+  <section class="flex flex-col gap-6 h-full">
+    {ssd.pros && (
+      <div class="bg-emerald-900/10 border border-emerald-500/20 rounded-2xl p-6 flex-1">
+        <h3 class="text-emerald-400 font-bold mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Stärken
+        </h3>
+        <ul class="space-y-2">
+          {ssd.pros.map(pro => (
+            <li class="text-emerald-100/80 text-sm">• {pro}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {ssd.cons && (
+      <div class="bg-red-900/10 border border-red-500/20 rounded-2xl p-6 flex-1">
+        <h3 class="text-red-400 font-bold mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          Schwächen
+        </h3>
+        <ul class="space-y-2">
+          {ssd.cons.map(con => (
+            <li class="text-red-100/80 text-sm">• {con}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </section>
+
 </div>

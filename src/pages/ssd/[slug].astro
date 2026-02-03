@@ -21,10 +21,12 @@ const { ssd } = Astro.props;
 // --- SEO AUTOMATISIERUNG ---
 // Wir bauen uns dynamische Titel und Beschreibungen für Google
 const currentYear = new Date().getFullYear();
-
 const seoTitle = `${ssd.name} für PS5: Kompatibilität & Test (${currentYear})`;
 
 const seoDesc = `Passt die ${ssd.name} in die PS5? Wir prüfen die Geschwindigkeit (${ssd.read_speed_mb_s} MB/s) und ob der Heatsink passt. Erfahre jetzt, ob du sie kaufen solltest.`;
+
+// URL für Amazon Affiliate Link (für Schema & Button)
+const affiliateUrl = `https://www.amazon.de/dp/${ssd.asin}?tag=ps5ssd21-21`;
 ---
 
 <Layout title={seoTitle} description={seoDesc}>
@@ -43,7 +45,7 @@ const seoDesc = `Passt die ${ssd.name} in die PS5? Wir prüfen die Geschwindigke
       </a>
     </nav>
 
-    <header class="mb-12">
+    <header class="mb-8">
       <div class="text-xs font-bold text-indigo-500 mb-3 uppercase tracking-widest">
         Hardware / Storage / Check
       </div>
@@ -55,6 +57,23 @@ const seoDesc = `Passt die ${ssd.name} in die PS5? Wir prüfen die Geschwindigke
       </p>
     </header>
 
+    <div class="bg-slate-800/50 border-l-4 border-blue-500 p-6 rounded-r-xl mb-12 backdrop-blur-sm">
+      <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Das Experten-Fazit</h3>
+      <p class="text-slate-200 text-lg leading-relaxed">
+        Die <strong>{ssd.name}</strong> ist mit einer Lesegeschwindigkeit von <span class="text-white font-bold">{ssd.read_speed_mb_s} MB/s</span>
+        {ssd.read_speed_mb_s >= 5500 ? 
+          <span class="text-emerald-400 font-bold"> voll kompatibel</span> : 
+          <span class="text-red-400 font-bold"> bedingt kompatibel</span>
+        } 
+        mit der PlayStation 5.
+        <br class="mb-2 block" />
+        {ssd.has_heatsink ? 
+          "✅ Da ein Heatsink bereits vorinstalliert ist, kannst du sie direkt einbauen." : 
+          "⚠️ Achtung: Dieses Modell hat keinen Kühlkörper. Du musst einen separaten Heatsink kaufen."
+        }
+      </p>
+    </div>
+
     <div class="space-y-12">
       
       <CompatibilityCheck ssd={ssd} />
@@ -65,30 +84,25 @@ const seoDesc = `Passt die ${ssd.name} in die PS5? Wir prüfen die Geschwindigke
       
     </div>
 
-
-
   </main>
 
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": ssd.name,
-    "image": "", // Hier könnte später eine Bild-URL rein
     "description": seoDesc,
     "brand": {
       "@type": "Brand",
       "name": ssd.brand
     },
-    "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "4.8", 
-        "bestRating": "5"
-      },
-      "author": {
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "url": affiliateUrl,
+      "seller": {
         "@type": "Organization",
-        "name": "Konsolen SSD Check"
+        "name": "Amazon"
       }
     }
   })} />

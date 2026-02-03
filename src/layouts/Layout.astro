@@ -21,18 +21,30 @@ const {
     image = "/social-default.jpg" 
 } = Astro.props;
 
-const siteUrl = Astro.url.origin;
-const imageUrl = new URL(image, siteUrl).href;
+// --- SEO: Canonical URL Logic ---
+// Verhindert Duplicate Content Probleme durch URL-Parameter
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Social Image Absolute URL
+const imageUrl = new URL(image, Astro.url).href;
+
+// --- UX: Active Link Highlighting ---
+const currentPath = Astro.url.pathname;
+const isSteamDeck = currentPath.includes('steam-deck');
+// PS5 ist aktiv auf der Startseite ODER auf SSD-Detailseiten (aber nicht Steam Deck)
+const isPS5 = (currentPath === '/' || currentPath.includes('/ssd/')) && !isSteamDeck;
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         
+        <link rel="canonical" href={canonicalURL} />
+
         <title>{title}</title>
         <meta name="description" content={description} />
 
@@ -49,9 +61,11 @@ const imageUrl = new URL(image, siteUrl).href;
         <meta property="twitter:image" content={imageUrl} />
         
         <link rel="sitemap" href="/sitemap-index.xml" />
+
+        <slot name="head" />
     </head>
     
-    <body class="bg-[#0a0a0c] text-white font-['Plus_Jakarta_Sans'] min-h-screen overflow-x-hidden flex flex-col">
+    <body class="bg-[#0a0a0c] text-white font-['Plus_Jakarta_Sans'] min-h-screen overflow-x-hidden flex flex-col selection:bg-blue-500/30">
         
         <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
             <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-600/10 blur-[120px]"></div>
@@ -61,14 +75,21 @@ const imageUrl = new URL(image, siteUrl).href;
         <nav class="border-b border-white/5 bg-black/40 backdrop-blur-xl sticky top-0 z-50">
             <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
               
-              <a href="/" class="font-bold text-xl tracking-tighter flex items-center gap-2 hover:opacity-80 transition">
-                  <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                  Konsolen<span class="text-slate-500">SSD</span>
+              <a href="/" class="font-bold text-xl tracking-tighter flex items-center gap-2 hover:opacity-80 transition group">
+                  <div class="w-3 h-3 bg-blue-500 rounded-full group-hover:animate-ping"></div>
+                  Konsolen<span class="text-slate-500 group-hover:text-slate-300 transition">SSD</span>
               </a>
 
               <div class="flex gap-6 text-sm font-medium">
-                  <a href="/" class="text-slate-300 hover:text-white transition">PS5</a>
-                  <a href="/steam-deck" class="text-slate-300 hover:text-white transition">Steam Deck</a>
+                  <a href="/" class={`transition relative ${isPS5 ? 'text-blue-400' : 'text-slate-300 hover:text-white'}`}>
+                    PS5
+                    {isPS5 && <span class="absolute -bottom-[21px] left-0 w-full h-[2px] bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>}
+                  </a>
+                  
+                  <a href="/steam-deck" class={`transition relative ${isSteamDeck ? 'text-orange-400' : 'text-slate-300 hover:text-white'}`}>
+                    Steam Deck
+                    {isSteamDeck && <span class="absolute -bottom-[21px] left-0 w-full h-[2px] bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]"></span>}
+                  </a>
               </div>
 
             </div>

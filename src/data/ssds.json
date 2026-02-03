@@ -11,7 +11,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0BM42X58C",
-    "notes": "Sehr beliebter Allround-Bestseller mit sehr gutem Preis-Leistungs-Verhältnis."
+    "notes": "Sehr beliebter Allround-Bestseller mit sehr gutem Preis-Leistungs-Verhältnis.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Extrem zuverlässig", "Top-Performance bei Random R/W", "RGB-Beleuchtung (Heatsink-Version)"],
+    "cons": ["Teurer als DRAM-lose Alternativen"]
   },
   {
     "id": "wd-black-sn850x-heatsink-1tb",
@@ -25,7 +29,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0B7CPSN2K",
-    "notes": "Extrem schnell, Top-Empfehlung für Gamer."
+    "notes": "Extrem schnell, Top-Empfehlung für Gamer.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Game Mode 2.0 Software", "Sehr geringe Latenz", "Offizielle Empfehlung vieler Reviewer"],
+    "cons": ["Stromverbrauch unter Last etwas höher"]
   },
   {
     "id": "WD-BLACK-SN7100-no-heatsink-1tb",
@@ -39,7 +47,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0DN7CYYSD",
-    "notes": "Neues Modell, sehr effizient. Heatsink erforderlich!"
+    "notes": "Neues Modell, sehr effizient. Heatsink erforderlich!",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Hervorragende Energieeffizienz", "Kühler Lauf", "Preis-Leistungs-Sieger 2025"],
+    "cons": ["Kein eigener DRAM-Cache (HMB)", "Heatsink muss separat gekauft werden"]
   },
   {
     "id": "crucial-p310-ssd-heatsink-1tb",
@@ -53,7 +65,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0DQ9K7S1Q",
-    "notes": "Starke Mittelklasse mit vorinstalliertem Kühler."
+    "notes": "Starke Mittelklasse mit vorinstalliertem Kühler.",
+    "tbw": 220,
+    "warranty_years": 5,
+    "pros": ["Sehr günstiger Einstiegspreis", "Vorinstallierter flacher Heatsink"],
+    "cons": ["QLC-Speicher hat geringere Haltbarkeit (TBW)", "Schreibgeschwindigkeit bricht bei vollem Cache ein"]
   },
   {
     "id": "samsung-9100-pro-heatsink-2tb",
@@ -67,7 +83,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0DWT6JGQH",
-    "notes": "Next-Gen Speed! PCIe 5.0 Monster (abwärtskompatibel)."
+    "notes": "Next-Gen Speed! PCIe 5.0 Monster (abwärtskompatibel).",
+    "tbw": 1400,
+    "warranty_years": 5,
+    "pros": ["Schnellste Consumer-SSD am Markt", "Zukunftssicher für PS6/PC Gen5", "Massive I/O Performance"],
+    "cons": ["Extrem hoher Preis", "Wird sehr heiß (Gute Gehäuse-Lüftung nötig)"]
   },
   {
     "id": "wd-black-sn850p-heatsink-2tb",
@@ -81,7 +101,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0C47ZX1WB",
-    "notes": "Offiziell lizenziert für PlayStation 5."
+    "notes": "Offiziell lizenziert für PlayStation 5.",
+    "tbw": 1200,
+    "warranty_years": 5,
+    "pros": ["Offizielles PlayStation-Branding", "Premium Heatsink-Design", "Optimierte Firmware für Konsolen"],
+    "cons": ["\"PlayStation-Steuer\" (Teurer als normale SN850X)"]
   },
   {
     "id": "samsung-990-evo-plus-no-heatsink-1tb",
@@ -95,7 +119,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0DGH2FH7T",
-    "notes": "Guter Allrounder, Heatsink muss dazu gekauft werden."
+    "notes": "Guter Allrounder, Heatsink muss dazu gekauft werden.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Hybrid-Kompatibilität (PCIe 4.0 x4 / 5.0 x2)", "Sehr effizient", "Günstiger als Pro-Modelle"],
+    "cons": ["Kein DRAM-Cache", "Heatsink fehlt"]
   },
   {
     "id": "kingston-nv2-no-heatsink-1tb",
@@ -109,7 +137,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0BBWH1R8H",
-    "notes": "Budget-Tipp. Funktioniert, aber unter Sony-Empfehlung (5500 MB/s)."
+    "notes": "Budget-Tipp. Funktioniert, aber unter Sony-Empfehlung (5500 MB/s).",
+    "tbw": 320,
+    "warranty_years": 3,
+    "pros": ["Unschlagbar günstig", "Ausreichend für einfache Spiele"],
+    "cons": ["Langsam (Unter Sony-Empfehlung)", "Komponenten-Lotterie (Hardware wechselt)", "Nur 3 Jahre Garantie"]
   },
   {
     "id": "crucial-p3-plus-no-heatsink-500gb",
@@ -123,7 +155,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0B25LQQPC",
-    "notes": "Günstige Einstiegs-Gen4. Heatsink nicht vergessen."
+    "notes": "Günstige Einstiegs-Gen4. Heatsink nicht vergessen.",
+    "tbw": 110,
+    "warranty_years": 5,
+    "pros": ["Sehr günstig", "Gute Verfügbarkeit"],
+    "cons": ["Niedrige TBW (Haltbarkeit)", "QLC-Speicher wird bei großen Downloads langsam", "Knapp unter PS5-Speed-Empfehlung"]
   },
   {
     "id": "crucial-p5-plus-no-heatsink-1tb",
@@ -137,7 +173,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B098WL46RS",
-    "notes": "Schnell & zuverlässig, oft für Gaming empfohlen."
+    "notes": "Schnell & zuverlässig, oft für Gaming empfohlen.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Eigener DRAM-Cache", "Micron High-End NAND", "Sehr stabil"],
+    "cons": ["Wird ohne Heatsink recht warm"]
   },
   {
     "id": "lexar-nm790-heatsink-1tb",
@@ -151,7 +191,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0CJY4L6DH",
-    "notes": "Sehr schnelle DRAM-lose SSD mit Top-Reviews."
+    "notes": "Sehr schnelle DRAM-lose SSD mit Top-Reviews.",
+    "tbw": 1000,
+    "warranty_years": 5,
+    "pros": ["Exzellente TBW-Haltbarkeit", "Fast so schnell wie High-End DRAM-SSDs", "Sehr effizient"],
+    "cons": ["HMB statt echtem DRAM (In PS5 aber kaum spürbar)"]
   },
   {
     "id": "sabrent-rocket-4-1tb",
@@ -165,7 +209,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0CZJWSFGS",
-    "notes": "Diese Version schafft volle 7400 MB/s. Heatsink erforderlich."
+    "notes": "Diese Version schafft volle 7400 MB/s. Heatsink erforderlich.",
+    "tbw": 700,
+    "warranty_years": 5,
+    "pros": ["Hohe Geschwindigkeit", "Solide TBW", "Amerikanischer Support"],
+    "cons": ["Heatsink separat nötig"]
   },
   {
     "id": "fanxiang-s770-heatsink-1tb",
@@ -179,7 +227,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0BNQ2DFX6",
-    "notes": "Preis-Leistungs-Kracher inkl. Heatsink."
+    "notes": "Preis-Leistungs-Kracher inkl. Heatsink.",
+    "tbw": 700,
+    "warranty_years": 5,
+    "pros": ["Extrem günstig für die Leistung", "Inklusive Heatsink", "Nutzt hochwertige InnoGrit Controller"],
+    "cons": ["Weniger bekannte Marke", "Support-Abwicklung schwieriger als bei Samsung/WD"]
   },
   {
     "id": "silicon-power-us75-no-heatsink-1tb",
@@ -193,7 +245,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0CCRSP4BL",
-    "notes": "Sehr gute Performance zum kleinen Preis."
+    "notes": "Sehr gute Performance zum kleinen Preis.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Gutes Preis/Leistungsverhältnis", "Zuverlässiger Maxio Controller"],
+    "cons": ["DRAM-los", "Kein Heatsink"]
   },
   {
     "id": "adata-xpg-gammix-s70-blade-1tb",
@@ -207,7 +263,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B093DP3X4H",
-    "notes": "Inklusive flachem Kühlblech zur Selbstmontage."
+    "notes": "Inklusive flachem Kühlblech zur Selbstmontage.",
+    "tbw": 740,
+    "warranty_years": 5,
+    "pros": ["Sehr flacher Heatsink (passt gut)", "Hohe TBW", "DRAM Cache vorhanden"],
+    "cons": ["Firmware-Updates manchmal nötig", "Heatsink ist nur ein dünnes Blech"]
   },
   {
     "id": "seagate-firecuda-530-heatsink-1tb",
@@ -221,7 +281,11 @@
     "form_factor": "2280",
     "compatibility": ["ps5", "pc"],
     "asin": "B0CWHDZSVN",
-    "notes": "High-End-SSD mit extrem hoher Haltbarkeit (TBW)."
+    "notes": "High-End-SSD mit extrem hoher Haltbarkeit (TBW).",
+    "tbw": 1275,
+    "warranty_years": 5,
+    "pros": ["Beste Haltbarkeit (TBW) am Markt", "Premium Heatsink von EKWB", "Datenrettungs-Service inkl."],
+    "cons": ["Sehr teuer", "Heatsink ist relativ dick (passt gerade so)"]
   },
   {
     "id": "sabrent-rocket-2230-1tb",
@@ -235,7 +299,11 @@
     "form_factor": "2230",
     "compatibility": ["steam-deck", "rog-ally", "surface"],
     "asin": "B0BQG6JCRP",
-    "notes": "Die Referenz für Steam Deck & ROG Ally. Passt perfekt in den 2230 Slot."
+    "notes": "Die Referenz für Steam Deck & ROG Ally. Passt perfekt in den 2230 Slot.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Gold-Standard für Steam Deck", "Kühl und effizient", "Zuverlässig"],
+    "cons": ["Etwas teurer als WD/Corsair"]
   },
   {
     "id": "wd-black-sn770m-1tb",
@@ -249,7 +317,11 @@
     "form_factor": "2230",
     "compatibility": ["steam-deck", "rog-ally", "surface"],
     "asin": "B0CP626QNM",
-    "notes": "Speziell für Handhelds entwickelt. Sehr effizient."
+    "notes": "Speziell für Handhelds entwickelt. Sehr effizient.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Optimiert für ROG Ally / Legion Go", "Markenqualität von WD"],
+    "cons": ["Wird in engen Gehäusen wärmer als Sabrent"]
   },
   {
     "id": "corsair-mp600-mini-1tb",
@@ -263,7 +335,11 @@
     "form_factor": "2230",
     "compatibility": ["steam-deck", "rog-ally", "surface"],
     "asin": "B0D9MJCFNK",
-    "notes": "Beliebter Bestseller. Plug & Play für das Steam Deck."
+    "notes": "Beliebter Bestseller. Plug & Play für das Steam Deck.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Sehr schnell (bis 7000 MB/s)", "Gutes Preis/Leistungsverhältnis"],
+    "cons": ["Für Steam Deck fast 'zu schnell' (kein FPS Vorteil)"]
   },
   {
     "id": "silicon-power-ud90-2230-1tb",
@@ -277,7 +353,11 @@
     "form_factor": "2230",
     "compatibility": ["steam-deck", "rog-ally"],
     "asin": "B0CCDBKKZY",
-    "notes": "Preis-Leistungs-Tipp für Sparfüchse."
+    "notes": "Preis-Leistungs-Tipp für Sparfüchse.",
+    "tbw": 600,
+    "warranty_years": 5,
+    "pros": ["Günstigste 1TB Option", "Ausreichend schnell"],
+    "cons": ["QLC-Komponenten möglich (Chargen-abhängig)", "Weniger Zubehör"]
   },
   {
     "id": "sabrent-rocket-2230-2tb",
@@ -291,6 +371,10 @@
     "form_factor": "2230",
     "compatibility": ["steam-deck", "rog-ally"],
     "asin": "B0C5YS3QY4",
-    "notes": "Massiver Speicherplatz! Eine der wenigen 2TB Optionen."
+    "notes": "Massiver Speicherplatz! Eine der wenigen 2TB Optionen.",
+    "tbw": 1200,
+    "warranty_years": 5,
+    "pros": ["Maximale Kapazität für Handhelds", "Hohe Zuverlässigkeit"],
+    "cons": ["Sehr teuer"]
   }
 ]
