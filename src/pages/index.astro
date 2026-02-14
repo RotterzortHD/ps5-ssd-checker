@@ -6,7 +6,7 @@ import '../global.css';
 
 // Filter: Nur PS5 kompatible SSDs auf der Startseite anzeigen
 // Wir ignorieren hier bewusst "inkompatible" Gen3 Drives, um die Startseite sauber zu halten,
-// oder wir zeigen alle und lassen den User filtern. 
+// oder wir zeigen alle und lassen den User filtern.
 // Hier zeigen wir alle PS5-relevanten (auch Gen4 ohne Heatsink).
 const ps5SSDs = ssds.filter(ssd => ssd.compatibility.includes('ps5'));
 const sortedSSDs = ps5SSDs.sort((a, b) => a.name.localeCompare(b.name));
@@ -31,19 +31,22 @@ const description = "Ist deine PS5 voll? Finde die beste M.2 SSD für PlayStatio
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-16">
       
-      <a href="/ssd/samsung-990-pro-1tb" class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-blue-500 p-4 rounded-xl transition group text-left backdrop-blur-sm">
+      {/* WICHTIG: Slash am Ende hinzugefügt */}
+      <a href="/ssd/samsung-990-pro-1tb/" class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-blue-500 p-4 rounded-xl transition group text-left backdrop-blur-sm">
         <div class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-1">Der Testsieger</div>
         <div class="font-bold text-white group-hover:text-blue-300 transition">Samsung 990 PRO</div>
         <div class="text-slate-400 text-sm mt-1">Beste Allround-Leistung & Zuverlässigkeit.</div>
       </a>
 
-      <a href="/ssd/lexar-nm790-heatsink-1tb" class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 p-4 rounded-xl transition group text-left backdrop-blur-sm">
+      {/* WICHTIG: Slash am Ende hinzugefügt */}
+      <a href="/ssd/lexar-nm790-heatsink-1tb/" class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 p-4 rounded-xl transition group text-left backdrop-blur-sm">
         <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">Preis-Tipp</div>
         <div class="font-bold text-white group-hover:text-emerald-300 transition">Lexar NM790</div>
         <div class="text-slate-400 text-sm mt-1">Unschlagbar günstig & schnell genug.</div>
       </a>
 
-      <a href="/ssd/wd-black-sn850x-heatsink-1tb" class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-orange-500 p-4 rounded-xl transition group text-left backdrop-blur-sm">
+      {/* WICHTIG: Slash am Ende hinzugefügt */}
+      <a href="/ssd/wd-black-sn850x-heatsink-1tb/" class="bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-orange-500 p-4 rounded-xl transition group text-left backdrop-blur-sm">
         <div class="text-xs font-bold text-orange-400 uppercase tracking-wider mb-1">Gamer Choice</div>
         <div class="font-bold text-white group-hover:text-orange-300 transition">WD_BLACK SN850X</div>
         <div class="text-slate-400 text-sm mt-1">Offizielle Empfehlung vieler Profis.</div>
@@ -61,15 +64,16 @@ const description = "Ist deine PS5 voll? Finde die beste M.2 SSD für PlayStatio
 
     <div class="grid gap-4">
       {sortedSSDs.map((ssd) => (
-        <a href={`/ssd/${ssd.id}`} class="ssd-card group relative block">
+        /* WICHTIG: Slash am Ende hinzugefügt bei der dynamischen URL */
+        <a href={`/ssd/${ssd.id}/`} class="ssd-card group relative block">
           <div class="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition duration-500 rounded-xl"></div>
           <div class="bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 flex items-center justify-between group-hover:translate-x-1">
-               
+              
               <div class="flex items-center gap-4">
                   <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-xs font-bold text-slate-400 border border-slate-700 shrink-0">
                       {ssd.brand.substring(0,2).toUpperCase()}
                   </div>
-                   <div>
+                  <div>
                       <h2 class="font-bold text-lg text-slate-200 group-hover:text-white transition">{ssd.name}</h2>
                       <p class="text-sm text-slate-500 font-mono">{ssd.read_speed_mb_s} MB/s • {ssd.interface}</p>
                   </div>
@@ -106,7 +110,6 @@ const description = "Ist deine PS5 voll? Finde die beste M.2 SSD für PlayStatio
             cards.forEach(card => {
                 // @ts-ignore
                 const text = card.innerText.toLowerCase();
-                
                 // @ts-ignore
                 if (text.includes(term)) {
                     // @ts-ignore
